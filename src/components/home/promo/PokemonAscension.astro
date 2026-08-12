@@ -1,0 +1,134 @@
+---
+import MainButton from "../../ui/MainButton.astro";
+import "../../../styles/global.css";
+---
+
+<main class="poke-background">
+    <svg
+        class="section-wave"
+        viewBox="0 0 1440 140"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+    >
+        <path
+            fill="#d0d6e4"
+            d="M0 90C160 100, 300 60, 430 65C560 70, 650 105, 790 85C930 65, 1000 55, 1110 70C1240 85, 1320 50, 1440 70L1440 140L0 140Z"
+        >
+        </path>
+    </svg>
+    <div>
+        <div class="poke-flex-row">
+            <div>
+                <h2 class="poke-title">CIVITAS:<br />POKÉMON ASCENSION</h2>
+                <p class="def-text">
+                    Civitas: Pokémon Ascension är en helt ny Pokémon-upplevelse
+                    i Minecraft, skapad som en kort och intensiv Civitas-säsong!
+                    <br /><br />
+                    Börja som en ny tränare, välj din första Pokémon och ge dig ut
+                    i en värld fylld av upptäckter, vilda Pokémon och andra tränare.
+                    Lås upp nya möjligheter, delta i dagliga events, utforska nya
+                    områden och bygg upp ditt lag inför det ultimata sluteventet.
+                    <br /><br />
+                    <em
+                        >Civitas: Pokémon Ascension – en del av Project: Beyond
+                        Create</em
+                    >
+                </p>
+            </div>
+            <iframe
+                class="poke-iframe-row"
+                src="https://www.youtube.com/embed/6xKWiCMKKJg?playlist=6xKWiCMKKJg&loop=1&autoplay=1"
+                title="YouTube video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            >
+            </iframe>
+        </div>
+        <div class="poke-flex-row">
+            <img
+                id="pokeparty"
+                src="https://backend.cobblemon.com/uploads/party_25545434f4.webp"
+                alt="Pokémon Party"
+            />
+            <div>
+                <h3 class="poke-title">DIN RESA. DITT LAG. DIN ASCENSION.</h3>
+                <p class="def-text">
+                    Alla börjar på samma plats – som en ny tränare med sin
+                    första Pokémon. Därifrån är det upp till dig hur långt du
+                    vill gå!
+                    <br /><br />
+                    Utforska världen, fånga nya Pokémon, utveckla ditt lag och lås
+                    upp nya möjligheter längs vägen. Med dagliga events och ständigt
+                    nya utmaningar finns det alltid nåt att göra – men precis som
+                    <em> Civitas: Spellbound</em> så är tiden begränsad.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="center-object">
+        <MainButton href="/modpacks/pokemon-ascension" text="Läs mer här ➜" />
+    </div>
+</main>
+
+<style>
+    .poke-background {
+        position: relative;
+        padding: 5rem 2rem;
+        background: #d0d6e4;
+    }
+
+    .section-wave {
+        position: absolute;
+        top: -139px;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+    }
+
+    .poke-background > div {
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    .poke-title,
+    .def-text {
+        font-family: var(--font-title);
+        color: #2d2c33;
+        text-shadow: 1px 1px 8px #6b6b6b;
+    }
+
+    .poke-flex-row {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .poke-flex-row > div {
+    flex: 1;
+}
+
+    #pokeparty {
+        flex: 1;
+        width: 50%;
+        max-width: 100%;
+    }
+
+    .poke-title {
+        margin: 0;
+        font-size: 3rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .def-text {
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .poke-iframe-row {
+        flex: 1;
+        width: 50%;
+        aspect-ratio: 16 / 9;
+        border-radius: 25px;
+    }
+</style>

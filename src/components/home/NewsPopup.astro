@@ -2,48 +2,46 @@
 import "../../styles/global.css";
 
 interface Props {
-	href: string;
-	title: string;
-	text: string;
+    href: string;
+    title: string;
+    text: string;
 }
 
 const { href, title, text } = Astro.props;
 ---
 
-<div class="flex-column">
-	<a class="main-button" id="news" href={href}>
-		<p id="popup-title">{title}</p>
-		<p id="popup-text">{text}</p>
-	</a>
-</div>
+<a class="news-popup main-button" href={href}>
+    <p class="news-title">{title}</p>
+    <p class="news-text">{text}</p>
+</a>
 
 <style>
-	#popup-title {
-		margin: 0 0 1em;
-		font-weight: normal;
-		color: #f8d951;
-		font-size: 20px;
-	}
+    .news-popup {
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        max-width: 300px;
 
-	#popup-text {
-		margin: 0 0 1em;
-		font-weight: normal;
-		color: #fff;
-		font-size: 1rem;
-		line-height: 1.5;
-	}
+        display: flex;
+        flex-direction: column;
 
-	#news {
-		position: absolute;
-		bottom: 16px;
-		right: 16px;
-		max-width: 300px;
+		z-index: 1000;
+        text-decoration: none;
+        backdrop-filter: blur(50px);
+    }
 
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
+    .news-title {
+        margin: 0 0 1em;
+        color: #f8d951;
+        font-size: 20px;
+        font-weight: normal;
+    }
 
-		text-decoration: none;
-		backdrop-filter: blur(50px);
-	}
+    .news-text {
+        margin: 0 0 1em;
+        color: #fff;
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: normal;
+    }
 </style>
