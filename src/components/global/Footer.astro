@@ -1,0 +1,116 @@
+---
+import "../../styles/global.css";
+import civitasLogo from "../../assets/global/civitas-logo.svg";
+---
+
+<footer class="footer">
+    <img
+        src={civitasLogo.src}
+        alt="Civitas"
+        class="footer-logo"
+    />
+
+    <p class="copyright">
+        © 2026 Civitas | Est. 2020
+    </p>
+
+    <p class="disclaimer">
+        En idé blev två, och sen tappade vi kontrollen.
+    </p>
+
+    <p class="trademarks">
+        Sidan är skapad med för mycket tid och för lite sömn.
+    </p>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-links">
+        <a
+            href="#discord"
+            aria-label="Discord"
+            class="discord-link"
+        >
+            <svg
+                class="discord-icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+            >
+                <path
+                    d="M19.54 5.24A16.9 16.9 0 0 0 15.4 4l-.5 1.02a15.4 15.4 0 0 0-5.8 0L8.6 4a16.9 16.9 0 0 0-4.14 1.24C1.84 9.45 1.13 13.55 1.49 17.6a16.8 16.8 0 0 0 5.1 2.6l1.24-1.7a10.4 10.4 0 0 1-1.95-.94l.48-.37c3.76 1.75 7.84 1.75 11.55 0l.48.37c-.62.37-1.27.69-1.95.94l1.24 1.7a16.8 16.8 0 0 0 5.1-2.6c.43-4.7-.73-8.76-3.24-12.36ZM8.3 15.1c-1.12 0-2.04-1.03-2.04-2.3s.9-2.3 2.04-2.3c1.14 0 2.06 1.03 2.04 2.3 0 1.27-.9 2.3-2.04 2.3Zm7.4 0c-1.12 0-2.04-1.03-2.04-2.3s.9-2.3 2.04-2.3c1.14 0 2.06 1.03 2.04 2.3 0 1.27-.9 2.04-2.04 2.3Z"
+                />
+            </svg>
+
+            <span>Discord</span>
+        </a>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        padding: 4rem 2rem 3rem;
+        background: #111217;
+        color: #d0d6e4;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo {
+        width: 180px;
+        margin-bottom: 1rem;
+    }
+
+    .copyright {
+        margin: 0;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .disclaimer {
+        max-width: 700px;
+        margin: 1.5rem 0 0;
+        color: #aaa;
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .trademarks {
+        max-width: 900px;
+        margin: 1rem 0 0;
+        color: #888;
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .footer-divider {
+        width: 260px;
+        height: 1px;
+        margin: 1.5rem 0 1rem;
+        background: rgba(208, 214, 228, 0.45);
+    }
+
+    .discord-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        color: #d0d6e4;
+        text-decoration: none;
+
+        transition:
+            color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .discord-link:hover {
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    .discord-icon {
+        width: 1.5rem;
+    }
+</style>
