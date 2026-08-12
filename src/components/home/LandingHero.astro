@@ -1,0 +1,62 @@
+---
+import MainButton from "../ui/MainButton.astro";
+import "../../styles/global.css";
+---
+
+<main class="hero">
+	<section class="hero-content">
+		<h1 class="hero-title">
+			<span>CIVITAS</span>
+		</h1>
+		<MainButton href="/projects" text="Våra projekt ➜" />
+	</section>
+</main>
+
+<style>
+	.hero {
+		width: 100%;
+		min-height: 100vh;
+
+		background-image: url("../../assets/home/hero_bg.webp");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.hero-title {
+		margin: 0;
+
+		font-size: 16rem;
+		letter-spacing: 0.5rem;
+		font-family: var(--font-cobalt);
+
+		filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.75));
+		transform: translateX(0.05em);
+	}
+
+	.hero-title span {
+		padding-right: 0.1em;
+		background: linear-gradient(
+			110deg,
+			#f0a52c 0%,
+			#ffe09a 50%,
+			#f0a52c 100%
+		);
+
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+	}
+</style>

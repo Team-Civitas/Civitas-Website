@@ -1,0 +1,49 @@
+---
+import "../../styles/global.css";
+
+interface Props {
+	href: string;
+	title: string;
+	text: string;
+}
+
+const { href, title, text } = Astro.props;
+---
+
+<div class="flex-column">
+	<a class="main-button" id="news" href={href}>
+		<p id="popup-title">{title}</p>
+		<p id="popup-text">{text}</p>
+	</a>
+</div>
+
+<style>
+	#popup-title {
+		margin: 0 0 1em;
+		font-weight: normal;
+		color: #f8d951;
+		font-size: 20px;
+	}
+
+	#popup-text {
+		margin: 0 0 1em;
+		font-weight: normal;
+		color: #fff;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
+	#news {
+		position: absolute;
+		bottom: 16px;
+		right: 16px;
+		max-width: 300px;
+
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+
+		text-decoration: none;
+		backdrop-filter: blur(50px);
+	}
+</style>
