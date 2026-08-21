@@ -2,24 +2,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
 @font-face {
-    font-family: "Cobalt Alien";
-    src: url("../assets/fonts/cobaltaliencondital.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+	font-family: "Cobalt Alien";
+	src: url("../assets/fonts/cobaltaliencondital.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 :root {
-    --font-main: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+	--font-main: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
 	--font-title: "Lexend", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-cobalt: "Cobalt Alien", sans-serif;
+	--font-cobalt: "Cobalt Alien", sans-serif;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-main);
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-main);
 }
 
 /*Center object*/
@@ -30,38 +30,36 @@ body {
 }
 
 /*Main button*/
+
 .main-button {
-		line-height: 1;
+	margin: 10px;
+	padding: 15px 45px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: 0.5s;
+	font-weight: bolder;
+	user-select: none;
 
-		padding: 0.7rem 1.5rem;
+	background: radial-gradient(ellipse at 50% 0%,
+			#ffe09a 0%,
+			#f8c965 35%,
+			#f0a52c 70%,
+			#b46b0a 100%);
 
-		font-size: 1.5rem;
-		text-decoration: none;
+	background-size: 200% auto;
 
-		color: #fff;
-		background: rgba(10, 8, 3, 0.65);
+	color: #1e1001;
 
-		border: 1px solid rgba(255, 190, 60, 0.9);
-		border-radius: 12px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 
-		box-shadow:
-			0 0 6px rgba(255, 190, 60, 0.8),
-			0 0 18px rgba(255, 170, 30, 0.45),
-			inset 0 0 8px rgba(255, 190, 60, 0.15);
+	display: block;
+	outline: none;
+}
 
-		transition:
-			box-shadow 0.25s ease,
-			border-color 0.25s ease,
-			transform 0.25s ease;
-	}
-
-	.main-button:hover {
-		border-color: #ffd36a;
-
-		box-shadow:
-			0 0 8px rgba(255, 205, 90, 1),
-			0 0 28px rgba(255, 175, 30, 0.65),
-			inset 0 0 12px rgba(255, 210, 100, 0.2);
-
-		transform: scale(1.01);
-	}
+.main-button:hover {
+	background-position: right center;
+	color: #1e1001;
+	text-decoration: none;
+}
