@@ -1,0 +1,4 @@
+services:
+  civitas-website:
+    build: .
+    restart: unless-stopped
