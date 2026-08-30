@@ -5,6 +5,14 @@ import "../../styles/global.css";
 <nav class="navbar">
     <a href="/" class="navbar-logo">CIVITAS</a>
 
+    <button
+        class="menu-button"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
     <div class="navbar-links">
         <a href="/modpacks">Modpacks</a>
         <a href="/projekt">Projekt</a>
@@ -15,10 +23,11 @@ import "../../styles/global.css";
 
 <script>
     const navbar = document.querySelector(".navbar");
+    const menuButton = document.querySelector(".menu-button");
+    const navbarLinks = document.querySelector(".navbar-links");
 
     let lastScrollY = window.scrollY;
 
-    // Scroll
     window.addEventListener("scroll", () => {
         const currentScrollY = window.scrollY;
 
@@ -37,63 +46,177 @@ import "../../styles/global.css";
             navbar?.classList.remove("hidden");
         }
     });
+
+    // Phone
+    menuButton?.addEventListener("click", () => {
+        const isOpen = navbar?.classList.toggle("menu-open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+    });
+
+    navbarLinks?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            navbar?.classList.remove("menu-open");
+            menuButton?.setAttribute("aria-expanded", "false");
+        });
+    });
 </script>
 
 <style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
+        width: 100%;
+        height: 64px;
+        box-sizing: border-box;
 
-    width: 100%;
-    height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        z-index: 1000;
 
-    z-index: 1000;
+        background: rgba(10, 8, 3, 0.45);
+        backdrop-filter: blur(16px);
 
-    background: rgba(10, 8, 3, 0.45);
-    backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
-}
-
-.navbar-logo {
-    position: absolute;
-    left: 24px;
-
-    color: white;
-    text-decoration: none;
-
-    font-family: var(--font-cobalt);
-    font-size: 1.5rem;
-}
-
-.navbar-links {
-    display: flex;
-    gap: 2.5rem;
-}
-
-.navbar-links a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-
-    transition: color 0.2s ease;
-}
-
-.navbar-links a:hover {
-    color: white;
-}
-
-.navbar.hidden {
-        transform: translateY(-100%);
+        transition:
+            transform 0.3s ease,
+            opacity 0.3s ease;
     }
 
+    .navbar-logo {
+        position: absolute;
+        left: 24px;
+
+        color: white;
+        text-decoration: none;
+
+        font-family: var(--font-cobalt);
+        font-size: 1.5rem;
+    }
+
+    .navbar-links {
+        display: flex;
+        gap: 2.5rem;
+    }
+
+    .navbar-links a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+
+        transition: color 0.2s ease;
+    }
+
+    .navbar-links a:hover {
+        color: white;
+    }
+
+    .navbar.hidden {
+        transform: translateY(-100%);
+    }
+    .menu-button {
+        display: none;
+    }
+
+    /*TABLET*/
+    @media (max-width: 900px) {
+        .navbar-links {
+            gap: 1.5rem;
+        }
+    }
+
+    /*PHONE*/
+    @media (max-width: 650px) {
+        .navbar {
+            justify-content: flex-start;
+            padding: 0 1.25rem;
+        }
+
+        .navbar-logo {
+            position: static;
+            font-size: 1.35rem;
+        }
+
+        .menu-button {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+
+            margin-left: auto;
+
+            width: 44px;
+            height: 44px;
+
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .menu-button span {
+            display: block;
+            width: 24px;
+            height: 2px;
+
+            background: white;
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        .navbar-links {
+            position: absolute;
+            top: 64px;
+            left: 0;
+
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+
+            background: rgba(10, 8, 3, 0.96);
+            backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+            max-height: 0;
+            overflow: hidden;
+
+            transition: max-height 0.3s ease;
+        }
+
+        .navbar.menu-open .navbar-links {
+            max-height: 300px;
+        }
+
+        .navbar-links a {
+            width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /*Hamburger animation*/
+        .navbar.menu-open .menu-button span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .navbar.menu-open .menu-button span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navbar.menu-open .menu-button span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    }
 </style>

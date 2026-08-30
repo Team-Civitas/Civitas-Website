@@ -83,6 +83,7 @@ import "../../../styles/global.css";
         top: -139px;
         left: 0;
         width: 100%;
+        height: 140px;
         pointer-events: none;
     }
 
@@ -105,13 +106,16 @@ import "../../../styles/global.css";
     }
 
     .poke-flex-row > div {
-    flex: 1;
-}
+        flex: 1;
+        min-width: 0;
+    }
 
     #pokeparty {
         flex: 1;
         width: 50%;
         max-width: 100%;
+        height: auto;
+        display: block;
     }
 
     .poke-title {
@@ -129,6 +133,70 @@ import "../../../styles/global.css";
         flex: 1;
         width: 50%;
         aspect-ratio: 16 / 9;
+        border: 0;
         border-radius: 25px;
+    }
+
+    /*TABLET*/
+    @media (max-width: 1000px) {
+        .poke-background {
+            padding: 4rem 2rem;
+        }
+
+        .poke-flex-row {
+            gap: 2.5rem;
+        }
+
+        .poke-title {
+            font-size: 2.4rem;
+        }
+
+        .def-text {
+            font-size: 1.1rem;
+        }
+    }
+
+    /*PHONE*/
+    @media (max-width: 700px) {
+        .poke-background {
+            padding: 3rem 1.25rem;
+        }
+
+        .section-wave {
+            top: -100px;
+            height: 101px;
+        }
+
+        .poke-flex-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 2rem;
+        }
+
+        .poke-flex-row + .poke-flex-row {
+            margin-top: 3rem;
+        }
+
+        .poke-title {
+            font-size: clamp(2rem, 9vw, 2.7rem);
+            line-height: 1.1;
+        }
+
+        .def-text {
+            font-size: 1rem;
+        }
+
+        .poke-iframe-row,
+        #pokeparty {
+            width: 100%;
+        }
+
+        .poke-iframe-row {
+            border-radius: 18px;
+        }
+
+        .center-object {
+            margin-top: 2.5rem;
+        }
     }
 </style>
