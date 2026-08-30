@@ -10,10 +10,12 @@ interface Props {
 const { href, title, text } = Astro.props;
 ---
 
-<a class="news-popup" href={href}>
-    <p class="news-title">{title}</p>
-    <p class="news-text">{text}</p>
-</a>
+<div class="popup-pos">
+    <a class="news-popup" href={href}>
+        <p class="news-title">{title}</p>
+        <p class="news-text">{text}</p>
+    </a>
+</div>
 
 <style>
     .news-popup {
@@ -24,36 +26,48 @@ const { href, title, text } = Astro.props;
 
         padding: 1rem;
         background: radial-gradient(
-        ellipse at 50% 0%,
-        #00000050 0%,
-        #00000090 100%
-    );
+            ellipse at 50% 0%,
+            #00000050 0%,
+            #00000090 100%
+        );
 
         border-radius: 10px;
 
-		z-index: 1000;
+        z-index: 1000;
         text-decoration: none;
         backdrop-filter: blur(50px);
 
-        transition: 0.3s;
+        transition: background-color 0.3s ease;
     }
 
     .news-popup:hover {
-	background-color: #000;
-}
+        background-color: #000;
+    }
 
     .news-title {
-        margin: 0 0 1em;
+        margin: 0 0 0.75rem;
         color: #f8d951;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: normal;
     }
 
     .news-text {
-        margin: 0 0 1em;
+        margin: 0;
         color: #fff;
         font-size: 1rem;
         line-height: 1.5;
         font-weight: normal;
+    }
+
+    /*PHONE*/
+    @media (max-width: 700px) {
+        .news-popup {
+        left: 50%;
+
+        width: calc(100% - 32px);
+        max-width: 300px;
+
+        transform: translateX(-50%);
+    }
     }
 </style>
