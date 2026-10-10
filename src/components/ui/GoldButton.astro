@@ -1,0 +1,17 @@
+---
+import "../../styles/global.css";
+
+interface Props {
+    href: string;
+    text: string;
+}
+
+const { href, text } = Astro.props;
+---
+
+<a
+    class="gold-button"
+    href={href}
+>
+    {text}
+</a>
