@@ -1,0 +1,236 @@
+---
+import GoldButton from "../../ui/GoldButton.astro";
+import recreated_trailer from "../../../assets/projects/recreated/recreated_trailer_website.mp4";
+import recreated_screenshot from "../../../assets/projects/recreated/re-created_spawn.png";
+import "../../../styles/global.css";
+---
+
+<main class="recreated-background">
+    <div class="recreated-flex">
+        <div class="content">
+            <h2 class="recreated-title">CIVITAS:<br />RE-CREATED</h2>
+            <p class="text">
+                <b>Civitas: Re-Created</b> är Civitas mest spelade och längst varande Minecraftserver hittills!
+                <br><br>
+                Servern startade redan år 2023 och får fortfarande uppdateringar än idag! På servern växer städer fram, järnvägar och rymdbaser byggs, och nya områden tar form.
+                <br><br>
+                <em>Civitas: Re-Created – en del av The Civitas Stories</em>
+            </p>
+            <div class="button-size">
+                <GoldButton
+                    href="/modpacks/pokemon-ascension"
+                    text="Utforska ➜"
+                />
+            </div>
+        </div>
+        <div class="postcards">
+            <video
+                id="postcard1"
+                src={recreated_trailer}
+                autoplay
+                muted
+                loop
+                playsinline></video>
+
+            <img id="postcard2" src={recreated_screenshot.src} alt="" />
+        </div>
+    </div>
+</main>
+
+<style>
+    .recreated-background {
+        min-height: 100vh;
+        background-image: url("../../../assets/projects/recreated/recreated_bg_section.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .recreated-title {
+        font-family: var(--font-title);
+        color: #fff;
+        text-shadow: 1px 1px 25px #000000;
+
+        font-size: 5rem;
+        letter-spacing: 0.1rem;
+        margin-bottom: 0;
+    }
+
+    .button-size {
+        width: fit-content;
+    }
+
+    .text {
+        font-size: 1.25rem;
+        line-height: 1.5;
+
+        font-family: var(--font-title);
+        color: #fff;
+        text-shadow: 1px 1px 25px #000000;
+    }
+
+    .recreated-flex {
+        max-width: 1400px;
+        min-height: 100vh;
+        margin-inline: auto;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .content {
+        min-width: 0;
+    }
+
+    .postcards {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        height: clamp(400px, 65vh, 700px);
+    }
+
+    .postcards img {
+        position: absolute;
+        max-width: 120%;
+        height: auto;
+        border: 3px solid #fff;
+        box-shadow: 1px 1px 50px #000;
+    }
+
+    #postcard1 {
+        position: absolute;
+
+        width: 120%;
+        object-fit: cover;
+
+        top: -10%;
+
+        border: 3px solid #fff;
+        box-shadow: 1px 1px 50px #000;
+        transform: rotate(-5deg);
+        background: #000;
+    }
+
+    #postcard2 {
+        width: 75%;
+        top: 55%;
+        left: -10%;
+        transform: rotate(5deg);
+    }
+
+    /* SMALL DESKTOP AND LAPTOP */
+    @media (min-width: 701px) and (max-width: 1900px) {
+        .recreated-flex {
+            width: 92%;
+            gap: 2rem;
+            grid-template-columns: 0.9fr 1.1fr;
+        }
+
+        .recreated-title {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+        }
+
+        .text {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .postcards {
+            height: 55vh;
+            min-height: 350px;
+        }
+
+        #postcard1 {
+            width: 100%;
+            max-width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        #postcard2 {
+            width: 65%;
+            max-width: 100%;
+            top: 48%;
+            left: 25%;
+        }
+    }
+
+    /* TABLET */
+    @media (max-width: 1000px) {
+        .recreated-flex {
+            gap: 2rem;
+            max-width: 95%;
+        }
+
+        .recreated-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        .postcards {
+            height: 50vh;
+            min-height: 350px;
+        }
+
+        .text {
+            font-size: 1.1rem;
+        }
+    }
+
+    /* PHONE */
+    @media (max-width: 700px) {
+        .recreated-flex {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 3rem 1rem;
+        }
+
+        .recreated-title {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+        }
+
+        .text {
+            font-size: 1rem;
+        }
+
+        .postcards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+
+            height: auto;
+            min-height: 0;
+            max-height: none;
+            padding-bottom: 5vh;
+        }
+
+        .postcards img {
+            position: static;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            transform: none;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #postcard1 {
+            position: static;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            transform: none;
+        }
+
+        #postcard2 {
+            width: 100%;
+            top: auto;
+            left: auto;
+            transform: none;
+        }
+    }
+</style>
