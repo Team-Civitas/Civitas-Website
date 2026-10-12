@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 @font-face {
 	font-family: "Cobalt Alien";
@@ -12,6 +13,7 @@
 :root {
 	--font-main: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
 	--font-title: "Lexend", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--font-archivo: "Arhivo Black", Roboto, "Helvetica Neue", Arial, sans-serif;
 	--font-cobalt: "Cobalt Alien", sans-serif;
 }
 

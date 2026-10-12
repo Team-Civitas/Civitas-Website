@@ -1,0 +1,286 @@
+---
+import { Image } from "astro:assets";
+import type { Modpack } from "../../data/modpacks";
+
+interface Props {
+    modpack: Modpack;
+    variant: "current" | "featured" | "archive";
+}
+
+const { modpack, variant } = Astro.props;
+
+const statusLabels = {
+    active: "AKTIVT PROJEKT",
+    upcoming: "KOMMANDE",
+    archived: "AVSLUTAD",
+};
+
+const formattedDate = modpack.releaseDate
+    ? new Date(`${modpack.releaseDate}T12:00:00`).toLocaleDateString("sv-SE", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+      })
+    : null;
+---
+
+<a class={`modpack-card ${variant}`} href={`/modpacks/${modpack.slug}`}>
+    <Image
+        src={modpack.image}
+        alt=""
+        class="card-image"
+        loading={variant === "current" ? "eager" : "lazy"}
+    />
+
+    <div class="card-overlay"></div>
+
+    <div class="card-content">
+        <div class="card-top">
+            <Image
+                src={modpack.logo}
+                alt={`${modpack.title} logotyp`}
+                class="card-logo"
+            />
+
+            <div class="card-labels">
+                <span class={`status status-${modpack.status}`}>
+                    {statusLabels[modpack.status]}
+                </span>
+
+                <span class="series">
+                    {modpack.series}
+                </span>
+            </div>
+        </div>
+
+        <div class="card-bottom">
+            <h3>{modpack.title}</h3>
+
+            <p class="description">{modpack.description}</p>
+
+            {
+                formattedDate && (
+                    <p class="release-date">Släpptes: {formattedDate}</p>
+                )
+            }
+        </div>
+    </div>
+</a>
+
+<style>
+    .modpack-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        isolation: isolate;
+        overflow: hidden;
+        min-width: 0;
+
+        color: #fff;
+        text-decoration: none;
+        background: #000;
+        border-radius: 8px;
+        border: 1px solid #343434;
+        transition: border-color 0.1s ease-in-out !important;
+
+    }
+
+    .modpack-card:hover {
+        border-color: #f0a52c;
+    }
+
+    .card-image {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        transition: transform 0.4s ease;
+    }
+
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+            90deg,
+            #0c0a09f7 0%,
+            #0c0a09d1 42%,
+            #0c0a0926 100%
+        );
+    }
+
+    .card-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .card-top {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .card-logo {
+        display: block;
+        width: 90px;
+        max-height: 65px;
+        object-fit: contain;
+        object-position: left top;
+        flex-shrink: 0;
+    }
+
+    .card-labels {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .status,
+    .series {
+        display: inline-block;
+        padding: 0.3rem 0.5rem;
+        border-radius: 4px;
+        background: rgba(20, 20, 20, 0.85);
+        font-size: 0.65rem;
+        letter-spacing: 0.04rem;
+    }
+
+    .status-active {
+        color: #85ff95;
+    }
+
+    .status-upcoming {
+        color: #67bdfa;
+    }
+
+    .status-archived {
+        color: #ba9ddf;
+    }
+
+    .series {
+        color: #ddd;
+    }
+
+    .card-bottom h3 {
+        margin: 0 0 0.65rem;
+        font-family: "Archivo Black", Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+    }
+
+    .description {
+        max-width: 34rem;
+        margin: 0;
+        color: #c2c2c2;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .release-date {
+        margin: 0.75rem 0 0;
+        color: #a0a0a0;
+        font-size: 0.8rem;
+    }
+
+    .current {
+        min-height: 280px;
+    }
+
+    .current .card-content {
+        padding: 2rem;
+    }
+
+    .current .card-logo {
+        width: 130px;
+        max-height: 85px;
+    }
+
+    .current .card-bottom h3 {
+        font-size: 2rem;
+    }
+
+    .featured {
+        min-height: 210px;
+    }
+
+    .featured .card-content {
+        padding: 1.25rem;
+    }
+
+    .featured .card-logo {
+        width: 75px;
+        max-height: 50px;
+    }
+
+    .featured .card-bottom h3 {
+        font-size: 1.2rem;
+    }
+
+    .featured .description {
+        font-size: 0.85rem;
+    }
+
+    .archive {
+        min-height: 240px;
+    }
+
+    .archive .card-content {
+        padding: 1rem;
+    }
+
+    .archive .card-top {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .archive .card-logo {
+        width: 65px;
+        max-height: 45px;
+    }
+
+    .archive .card-bottom h3 {
+        font-size: 1rem;
+    }
+
+    .archive .description {
+        font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+        .current {
+            min-height: 300px;
+        }
+
+        .current .card-content {
+            padding: 1.25rem;
+        }
+
+        .current .card-bottom h3 {
+            font-size: 1.5rem;
+        }
+
+        .card-logo {
+            width: 70px;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .modpack-card,
+        .card-image {
+            transition: none;
+        }
+    }
+</style>

@@ -1,0 +1,52 @@
+---
+import type { Modpack } from "../../data/modpacks";
+import ModpackCard from "./ModpackCard.astro";
+
+interface Props {
+    modpacks: Modpack[];
+}
+
+const { modpacks } = Astro.props;
+
+const currentModpack = modpacks.find((modpack) => modpack.current);
+---
+
+{
+    currentModpack && (
+        <section class="current-section">
+            <h2 class="section-heading">
+                <span />
+                AKTUELLT
+                <span />
+            </h2>
+
+            <ModpackCard modpack={currentModpack} variant="current" />
+        </section>
+    )
+}
+
+<style>
+    .current-section {
+        max-width: 1400px;
+        margin: 0 auto 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .section-heading {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 0 0 1rem;
+
+        color: #dedede;
+        font-size: 0.85rem;
+        letter-spacing: 0.15rem;
+    }
+
+    .section-heading span {
+        width: 2rem;
+        height: 3px;
+        background: #f0a52c;
+        flex-shrink: 0;
+    }
+</style>

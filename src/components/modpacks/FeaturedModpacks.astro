@@ -1,0 +1,66 @@
+---
+import type { Modpack } from "../../data/modpacks";
+import ModpackCard from "./ModpackCard.astro";
+
+interface Props {
+    modpacks: Modpack[];
+}
+
+const { modpacks } = Astro.props;
+
+const featuredModpacks = modpacks.filter((modpack) => modpack.featured);
+---
+
+{
+    featuredModpacks.length > 0 && (
+        <section class="featured-section">
+            <h2 class="section-heading">
+                <span />
+                UTVALDA
+                <span />
+            </h2>
+
+            <div class="featured-grid">
+                {featuredModpacks.map((modpack) => (
+                    <ModpackCard modpack={modpack} variant="featured" />
+                ))}
+            </div>
+        </section>
+    )
+}
+
+<style>
+    .featured-section {
+        max-width: 1400px;
+        margin: 0 auto 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .section-heading {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 0 0 1rem;
+        color: #dedede;
+        font-size: 0.85rem;
+        letter-spacing: 0.15rem;
+    }
+
+    .section-heading span {
+        width: 2rem;
+        height: 3px;
+        background: #f0a52c;
+    }
+
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    @media (max-width: 650px) {
+        .featured-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
