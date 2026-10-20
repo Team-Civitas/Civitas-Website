@@ -5,6 +5,7 @@ import Hero from "../../components/modpacks/Hero.astro";
 
 import CurrentModpack from "../../components/modpacks/CurrentModpack.astro";
 import FeaturedModpacks from "../../components/modpacks/FeaturedModpacks.astro";
+import Modpacks from "../../components/modpacks/Modpacks.astro";
 
 import { modpacks } from "../../data/modpacks";
 import Layout from "../../layouts/Layout.astro";
@@ -16,6 +17,7 @@ import Layout from "../../layouts/Layout.astro";
     <main class="modpacks-page">
         <CurrentModpack modpacks={modpacks} />
         <FeaturedModpacks modpacks={modpacks} />
+        <Modpacks modpacks={modpacks} />
     </main>
     <Footer />
 </Layout>
